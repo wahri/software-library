@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35.5" height="29.045" viewBox="0 0 35.5 29.045">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f2f1f5;
+      }
+    </style>
+  </defs>
+  <path id="Icon_material-ondemand-video" data-name="Icon material-ondemand-video" class="cls-1" d="M33.773,4.5H4.727A3.216,3.216,0,0,0,1.5,7.727V27.091a3.226,3.226,0,0,0,3.227,3.227H12.8v3.227H25.7V30.318h8.068a3.223,3.223,0,0,0,3.211-3.227L37,7.727A3.226,3.226,0,0,0,33.773,4.5Zm0,22.591H4.727V7.727H33.773ZM25.7,17.409l-11.3,6.455V10.955Z" transform="translate(-1.5 -4.5)"/>
+</svg>

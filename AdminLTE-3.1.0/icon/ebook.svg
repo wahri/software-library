@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f2f1f5;
+      }
+    </style>
+  </defs>
+  <path id="Icon_material-library-books" data-name="Icon material-library-books" class="cls-1" d="M6.5,10H3V34.5A3.51,3.51,0,0,0,6.5,38H31V34.5H6.5Zm28-7h-21A3.51,3.51,0,0,0,10,6.5v21A3.51,3.51,0,0,0,13.5,31h21A3.51,3.51,0,0,0,38,27.5V6.5A3.51,3.51,0,0,0,34.5,3ZM32.75,18.75H15.25v-3.5h17.5Zm-7,7H15.25v-3.5h10.5Zm7-14H15.25V8.25h17.5Z" transform="translate(-3 -3)"/>
+</svg>
