@@ -14,9 +14,9 @@ func (s *Server) initializeRoutes() {
 	s.Router.HandleFunc("/users/{id}", middlewares.SetMiddlewareJSON(s.DeleteUser)).Methods("DELETE")
 
 	// Software routes
-	s.Router.HandleFunc("/software", middlewares.SetMiddlewareJSON(s.CreateSoftware)).Methods("POST")
-	// s.Router.HandleFunc("/users", middlewares.SetMiddlewareJSON(s.GetUsers)).Methods("GET")
-	// s.Router.HandleFunc("/users/{id}", middlewares.SetMiddlewareJSON(s.GetUser)).Methods("GET")
-	// s.Router.HandleFunc("/users/{id}", middlewares.SetMiddlewareJSON(s.UpdateUser)).Methods("PUT")
-	// s.Router.HandleFunc("/users/{id}", middlewares.SetMiddlewareJSON(s.DeleteUser)).Methods("DELETE")
+	s.Router.HandleFunc("/softwares", middlewares.SetMiddlewareJSON(s.CreateSoftware)).Methods("POST")
+	s.Router.HandleFunc("/softwares", middlewares.SetMiddlewareJSON(s.GetSoftwares)).Methods("GET")
+	s.Router.HandleFunc("/softwares/{id}", middlewares.SetMiddlewareJSON(s.GetSoftware)).Methods("GET")
+	// s.Router.HandleFunc("/Softwares/{id}", middlewares.SetMiddlewareJSON(s.UpdateSoftware)).Methods("PUT")
+	// s.Router.HandleFunc("/Softwares/{id}", middlewares.SetMiddlewareJSON(s.DeleteSoftware)).Methods("DELETE")
 }

@@ -1,6 +1,7 @@
 package models
 
 import (
+	"errors"
 	"time"
 
 	"github.com/jinzhu/gorm"
@@ -28,4 +29,24 @@ func (p *Software) SaveSoftware(db *gorm.DB) (*Software, error) {
 		return &Software{}, err
 	}
 	return p, nil
+}
+
+func (p *Software) GetAllSoftwares(db *gorm.DB) (*[]Software, error) {
+	Softwares := []Software{}
+	err := db.Debug().Model(&Software{}).Limit(100).Find(&Softwares).Error
+	if err != nil {
+		return &[]Software{}, err
+	}
+	return &Softwares, nil
+}
+
+func (u *Software) GetSoftwareByID(db *gorm.DB, uid uint32) (*Software, error) {
+	err := db.Debug().Model(Software{}).Where("id = ?", uid).Take(&u).Error
+	if err != nil {
+		return &Software{}, err
+	}
+	if gorm.IsRecordNotFoundError(err) {
+		return &Software{}, errors.New("Software Not Found")
+	}
+	return u, err
 }

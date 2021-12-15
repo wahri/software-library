@@ -8,6 +8,8 @@ import (
 	"software_library/backend/api/utils/formaterror"
 	upload "software_library/backend/api/utils/uploadfile"
 	"strconv"
+
+	"github.com/gorilla/mux"
 )
 
 func (server *Server) CreateSoftware(w http.ResponseWriter, r *http.Request) {
@@ -52,4 +54,33 @@ func (server *Server) CreateSoftware(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Location", fmt.Sprintf("%s%s/%d", r.Host, r.RequestURI, softwareCreated.ID))
 	responses.JSON(w, http.StatusCreated, softwareCreated)
+}
+
+func (server *Server) GetSoftwares(w http.ResponseWriter, r *http.Request) {
+
+	Software := models.Software{}
+
+	Softwares, err := Software.GetAllSoftwares(server.DB)
+	if err != nil {
+		responses.ERROR(w, http.StatusInternalServerError, err)
+		return
+	}
+	responses.JSON(w, http.StatusOK, Softwares)
+}
+
+func (server *Server) GetSoftware(w http.ResponseWriter, r *http.Request) {
+
+	vars := mux.Vars(r)
+	uid, err := strconv.ParseUint(vars["id"], 10, 32)
+	if err != nil {
+		responses.ERROR(w, http.StatusBadRequest, err)
+		return
+	}
+	Software := models.Software{}
+	SoftwareGotten, err := Software.GetSoftwareByID(server.DB, uint32(uid))
+	if err != nil {
+		responses.ERROR(w, http.StatusBadRequest, err)
+		return
+	}
+	responses.JSON(w, http.StatusOK, SoftwareGotten)
 }
