@@ -17,6 +17,7 @@ type Software struct {
 	License        string    `gorm:"size:255;not null" json:"License"`
 	Description    string    `gorm:"size:255;not null" json:"Description"`
 	PreviewImage   string    `gorm:"size:255;not null" json:"PreviewImage"`
+	Ebook          string    `gorm:"size:255;not null" json:"Ebook"`
 	ProductVersion float64   `gorm:"not null" json:"ProductVersion"`
 	ReleaseDate    time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"ReleaseDate"`
 	CreatedAt      time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"created_at"`
@@ -49,4 +50,28 @@ func (u *Software) GetSoftwareByID(db *gorm.DB, uid uint32) (*Software, error) {
 		return &Software{}, errors.New("Software Not Found")
 	}
 	return u, err
+}
+
+func (u *Software) DeleteASoftware(db *gorm.DB, uid uint32) (int64, error) {
+
+	db = db.Debug().Model(&Software{}).Where("id = ?", uid).Take(&Software{}).Delete(&Software{})
+
+	if db.Error != nil {
+		return 0, db.Error
+	}
+	return db.RowsAffected, nil
+}
+
+func (u *Software) UpdateSoftware(db *gorm.DB, uid uint32) (*Software, error) {
+
+	db = db.Debug().Model(&Software{}).Where("id = ?", uid).Take(&Software{}).UpdateColumns(&u)
+	if db.Error != nil {
+		return &Software{}, db.Error
+	}
+	// This is the display the updated Software
+	err := db.Debug().Model(&Software{}).Where("id = ?", uid).Take(&u).Error
+	if err != nil {
+		return &Software{}, err
+	}
+	return u, nil
 }

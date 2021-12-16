@@ -17,6 +17,6 @@ func (s *Server) initializeRoutes() {
 	s.Router.HandleFunc("/softwares", middlewares.SetMiddlewareJSON(s.CreateSoftware)).Methods("POST")
 	s.Router.HandleFunc("/softwares", middlewares.SetMiddlewareJSON(s.GetSoftwares)).Methods("GET")
 	s.Router.HandleFunc("/softwares/{id}", middlewares.SetMiddlewareJSON(s.GetSoftware)).Methods("GET")
-	// s.Router.HandleFunc("/Softwares/{id}", middlewares.SetMiddlewareJSON(s.UpdateSoftware)).Methods("PUT")
-	// s.Router.HandleFunc("/Softwares/{id}", middlewares.SetMiddlewareJSON(s.DeleteSoftware)).Methods("DELETE")
+	s.Router.HandleFunc("/softwares/{id}", middlewares.SetMiddlewareJSON(s.UpdateSoftware)).Methods("PUT")
+	s.Router.HandleFunc("/softwares/{id}", middlewares.SetMiddlewareJSON(s.DeleteSoftware)).Methods("DELETE")
 }

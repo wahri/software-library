@@ -227,6 +227,3 @@ func (u *User) UploadImage(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("done"))
 	u.Foto = filename
 }
-
-//wahyu jelek
-/// wahyu saatnya kerja bukan  main gem

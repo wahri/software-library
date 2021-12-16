@@ -34,6 +34,8 @@ func UploadFile(w http.ResponseWriter, r *http.Request, value_name string, folde
 	nameFile := randomString(10)
 	filename := fmt.Sprintf("%d-%s%s", timeUpload, nameFile, filepath.Ext(handler.Filename))
 
+	createDirectory := filepath.Join(dir, "uploads", folder_name)
+	os.Mkdir(createDirectory, 0777)
 	fileLocation := filepath.Join(dir, "uploads", folder_name, filename)
 	targetFile, err := os.OpenFile(fileLocation, os.O_WRONLY|os.O_CREATE, 0666)
 	if err != nil {
