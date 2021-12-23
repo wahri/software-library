@@ -20,10 +20,17 @@ func (s *Server) initializeRoutes() {
 	s.Router.HandleFunc("/softwares/{id}", middlewares.SetMiddlewareJSON(s.UpdateSoftware)).Methods("PUT")
 	s.Router.HandleFunc("/softwares/{id}", middlewares.SetMiddlewareJSON(s.DeleteSoftware)).Methods("DELETE")
 
-	// Software routes
+	// Video routes
 	s.Router.HandleFunc("/video", middlewares.SetMiddlewareJSON(s.CreateVideoTutorial)).Methods("POST")
 	s.Router.HandleFunc("/video", middlewares.SetMiddlewareJSON(s.GetVideoTutorials)).Methods("GET")
 	s.Router.HandleFunc("/video/{id}", middlewares.SetMiddlewareJSON(s.GetVideoTutorial)).Methods("GET")
 	s.Router.HandleFunc("/video/{id}", middlewares.SetMiddlewareJSON(s.UpdateVideoTutorial)).Methods("PUT")
 	s.Router.HandleFunc("/video/{id}", middlewares.SetMiddlewareJSON(s.DeleteVideoTutorial)).Methods("DELETE")
+
+	// Dokumen routes
+	s.Router.HandleFunc("/dokumen", middlewares.SetMiddlewareJSON(s.CreateDokumenPendukung)).Methods("POST")
+	s.Router.HandleFunc("/dokumen", middlewares.SetMiddlewareJSON(s.GetDokumenPendukungs)).Methods("GET")
+	s.Router.HandleFunc("/dokumen/{id}", middlewares.SetMiddlewareJSON(s.GetDokumenPendukung)).Methods("GET")
+	s.Router.HandleFunc("/dokumen/{id}", middlewares.SetMiddlewareJSON(s.UpdateDokumenPendukung)).Methods("PUT")
+	s.Router.HandleFunc("/dokumen/{id}", middlewares.SetMiddlewareJSON(s.DeleteDokumenPendukung)).Methods("DELETE")
 }
